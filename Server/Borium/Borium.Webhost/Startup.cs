@@ -1,10 +1,11 @@
-﻿using Borium.Application.Utils;
-using Borium.Repositories;
+﻿using Borium.Repositories;
+using Borium.Webhost.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Borium.Webhost
 {
@@ -21,11 +22,11 @@ namespace Borium.Webhost
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            var commandConnectionString = Configuration["CommandConnectionString"];
-            var commandConnectionStringWrapper = new CommandConnectionStringWrapper(commandConnectionString);
-            services.AddSingleton(commandConnectionStringWrapper);
+            services.RegisterConnectionStringWrappers(Configuration);
+            services.RegisterSwagger();
             services.AddEntityFrameworkSqlServer()
                .AddDbContext<BoriumDbContext>();
+            services.RegisterHandlersWithDecorators();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

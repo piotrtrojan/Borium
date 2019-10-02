@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Borium.DomainModel.Entities
+﻿namespace Borium.DomainModel.Entities
 {
     public class ArtistWork
     {
