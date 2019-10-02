@@ -1,5 +1,6 @@
 ﻿using Borium.Application.Interfaces;
 using Borium.Application.Utils;
+using Borium.Webhost.Utils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -41,6 +42,7 @@ namespace Borium.Webhost.Extensions
 
         public static void RegisterHandlersWithDecorators(this IServiceCollection services)
         {
+            services.AddSingleton<ApiExecutor>();
             var handlers = typeof(ICommand).Assembly.GetTypes()
                 .Where(q => q.GetInterfaces().Any(y => IsHandlerInterface(y)))
                 .Where(x => x.Name.EndsWith("Handler"))
