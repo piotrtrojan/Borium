@@ -13,6 +13,8 @@ import { SearchArtistComponent } from './components/artist/search-artist/search-
 import { MainComponent } from './components/main/main/main.component';
 import { TopMenuComponent } from './components/main/top-menu/top-menu.component';
 import { MainEpochComponent } from './components/epoch/main-epoch/main-epoch.component';
+import { PreloaderSpinnerComponent } from './components/shared/preloader-spinner/preloader-spinner.component';
+import { TopBarComponent } from './components/shared/top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { MainEpochComponent } from './components/epoch/main-epoch/main-epoch.com
     SearchArtistComponent,
     MainComponent,
     TopMenuComponent,
-    MainEpochComponent
+    MainEpochComponent,
+    PreloaderSpinnerComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,
