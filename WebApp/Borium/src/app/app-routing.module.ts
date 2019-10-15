@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MainDashboardComponent } from './components/dashboard/main-dashboard/main-dashboard.component';
+import { EpochDashboardComponent } from './components/epoch/epoch-dashboard/epoch-dashboard.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'main',
-  //   pathMatch: 'full'
-  // },
-  // {
-  //   path: 'main',
-  //   component: MainComponent
-  // },
-  // {
-  //   path: 'epoch',
-  //   component: MainEpochComponent
-  // },
+  {
+    path: '',
+    redirectTo: 'main',
+    pathMatch: 'full'
+  },
+  {
+    path: 'main',
+    component: MainDashboardComponent
+  },
+  {
+    path: 'epoch',
+    component: EpochDashboardComponent
+  },
   // {
   //   path: 'epoch/:id',
   //   component: ShowEpochComponent
