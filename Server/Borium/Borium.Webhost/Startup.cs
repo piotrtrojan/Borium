@@ -50,7 +50,7 @@ namespace Borium.Webhost
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Argon API");
             });
-            ctx.Database.EnsureCreated(); // TODO: This is just rearly development.
+            ctx.Database.EnsureCreated(); // TODO: This is just for early development.
 
         }
     }

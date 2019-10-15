@@ -4,5 +4,109 @@
         <name>Borium.Webhost</name>
     </assembly>
     <members>
+        <member name="T:Borium.Webhost.Controllers.BoriumBaseController">
+            <summary>
+            Abstract Controller for whole Borium Webhost. Contains methods that converts QueryResult and CommandResult to ActionResult.
+            </summary>
+        </member>
+        <member name="M:Borium.Webhost.Controllers.BoriumBaseController.Error(System.String)">
+            <summary>
+            Returns BadRequest ActionResult (400)
+            </summary>
+            <param name="error">error details, e.g. invalid parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:Borium.Webhost.Controllers.BoriumBaseController.HandleCommandResult(Borium.Application.Utils.CommandResult)">
+            <summary>
+            Converts CommandResult to ActionResult response.
+            </summary>
+            <param name="result">Command Result object.</param>
+            <returns>NoContent(204) when command is successful, Error->BadRequest(400) when invalid.</returns>
+        </member>
+        <member name="M:Borium.Webhost.Controllers.BoriumBaseController.HandleQueryResult``1(``0)">
+            <summary>
+            Converts QueryResult to ActionResult response.
+            </summary>
+            <param name="result">QueryResult object</param>
+            <typeparam name="T">QueryResult content type</typeparam>
+            <returns>Not found - when result is empty, Ok - when result is filled.</returns>
+        </member>
+        <member name="M:Borium.Webhost.Controllers.BoriumBaseController.HandleQueryCollectionResult``1(``0)">
+            <summary>
+            Returns Ok response from given result.
+            </summary>
+            <param name="result">Result object</param>
+            <typeparam name="T">Result type, should be collection</typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Borium.Webhost.Controllers.EpochController">
+            <summary>
+            Controller for Epoch specific Endpoits.
+            </summary>
+        </member>
+        <member name="M:Borium.Webhost.Controllers.EpochController.#ctor(Borium.Webhost.Utils.ApiExecutor)">
+            <summary>
+            Initializes new instance of EpochController.
+            </summary>
+            <param name="apiExecutor">Dispatcher for Queries and Commands</param>
+        </member>
+        <member name="M:Borium.Webhost.Controllers.EpochController.GetEpochList">
+            <summary>
+            Endpoint that returns all Epoches.
+            </summary>
+            <returns>Epoches Collection.</returns>
+        </member>
+        <member name="T:Borium.Webhost.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Extensions for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection">IServiceCollection</see> interface.
+            </summary>
+        </member>
+        <member name="M:Borium.Webhost.Extensions.ServiceCollectionExtensions.RegisterConnectionStringWrappers(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            It registers singleton services for CommandConnectionStringWrapper and QueryConnectionStringWrapper.
+            Connection stirngs are taken from config file.
+            </summary>
+            <param name="services">IServiceCollection instance</param>
+            <param name="Configuration">configuration resolved from project config file</param>
+        </member>
+        <member name="M:Borium.Webhost.Extensions.ServiceCollectionExtensions.RegisterSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Register Swagger documentation.
+            </summary>
+            <param name="services">IServiceCollection instance</param>
+        </member>
+        <member name="M:Borium.Webhost.Extensions.ServiceCollectionExtensions.RegisterHandlersWithDecorators(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers ApiExecutor, CommandHandlers and QueryHandlers. Implementations are taken by reflection from Assembly.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:Borium.Webhost.Utils.ApiExecutor">
+            <summary>
+            Dispatcher for Queries and Commands.
+            </summary>
+        </member>
+        <member name="M:Borium.Webhost.Utils.ApiExecutor.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes new instance of ApiExecutor.
+            </summary>
+            <param name="serviceProvider">service provider to resolve proper CommandHandler or QueryHandler, based on its type.</param>
+        </member>
+        <member name="M:Borium.Webhost.Utils.ApiExecutor.Dispatch(Borium.Application.Interfaces.ICommand)">
+            <summary>
+            Resolves proper service (ICommandHandler implementation) and executes its logic.
+            Service is resolved based on given ICommand parameter.
+            </summary>
+            <param name="command">Command to execute</param>
+            <returns></returns>
+        </member>
+        <member name="M:Borium.Webhost.Utils.ApiExecutor.Dispatch``1(Borium.Application.Interfaces.IQuery{``0})">
+            <summary>
+            Resolves proper service (IQueryHandler implementation) and executes its logic.
+            Service is resolved based on given IQuery parameter.
+            </summary>
+            <param name="query">Query to execute</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
