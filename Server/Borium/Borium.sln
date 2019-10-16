@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Borium.Application", "Boriu
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Borium.Database", "Borium.Database\Borium.Database.sqlproj", "{63CA4FA5-5495-4BBA-8876-18A5703C21D4}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Borium.Database.DemoData", "Borium.Database.DemoData\Borium.Database.DemoData.sqlproj", "{49E0E75C-C8A4-4849-9C47-85B9476CDE08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,12 @@ Global
 		{63CA4FA5-5495-4BBA-8876-18A5703C21D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63CA4FA5-5495-4BBA-8876-18A5703C21D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{63CA4FA5-5495-4BBA-8876-18A5703C21D4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{49E0E75C-C8A4-4849-9C47-85B9476CDE08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49E0E75C-C8A4-4849-9C47-85B9476CDE08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49E0E75C-C8A4-4849-9C47-85B9476CDE08}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{49E0E75C-C8A4-4849-9C47-85B9476CDE08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49E0E75C-C8A4-4849-9C47-85B9476CDE08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49E0E75C-C8A4-4849-9C47-85B9476CDE08}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

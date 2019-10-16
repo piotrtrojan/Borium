@@ -1,6 +1,6 @@
 ﻿CREATE TABLE Borium.Epoches
 (
-	Id			INT NOT NULL PRIMARY KEY,
+	Id			INT IDENTITY(1,1) NOT NULL,
 	Name		nvarchar(max) NULL,
 	Description nvarchar(max) NULL,
 	StartYear	int NULL,

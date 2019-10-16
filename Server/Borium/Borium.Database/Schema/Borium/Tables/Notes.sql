@@ -1,6 +1,6 @@
 ﻿CREATE TABLE Borium.Notes
 (
-	Id			INT				NOT NULL PRIMARY KEY,
+	Id			INT				IDENTITY(1,1) NOT NULL,
 	WorkId		int				NOT NULL,
 	IsScan		bit				NOT NULL,
 	FileName	nvarchar(max)	NULL,

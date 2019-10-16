@@ -1,8 +1,7 @@
 ﻿CREATE TABLE Borium.Works
 (
-	Id		INT				NOT NULL PRIMARY KEY,
+	Id		INT				IDENTITY(1,1) NOT NULL,
 	Title	nvarchar(max)	NULL,
-	Age		int				NULL,
 	EpochId int				NOT NULL,
 
 	CONSTRAINT PK_Works

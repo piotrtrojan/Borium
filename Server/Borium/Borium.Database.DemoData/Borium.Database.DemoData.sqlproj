@@ -3,17 +3,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Borium.Database</Name>
+    <Name>Borium.Database.DemoData</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{63ca4fa5-5495-4bba-8876-18a5703c21d4}</ProjectGuid>
+    <ProjectGuid>{49e0e75c-c8a4-4849-9c47-85b9476cde08}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>Borium.Database</RootNamespace>
-    <AssemblyName>Borium.Database</AssemblyName>
-    <ModelCollation>1033,CI</ModelCollation>
+    <RootNamespace>Borium.Database.DemoData</RootNamespace>
+    <AssemblyName>Borium.Database.DemoData</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -22,8 +22,6 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <DefaultCollation>Latin1_General_100_CI_AS</DefaultCollation>
-    <EnableFullTextSearch>False</EnableFullTextSearch>
     <DefaultSchema>Borium</DefaultSchema>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -60,24 +58,24 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Schema" />
-    <Folder Include="Schema\Borium" />
-    <Folder Include="Schema\Borium\Tables" />
-    <Folder Include="Schema\Borium\Views" />
+    <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="VersionName">
-      <DefaultValue>Borium</DefaultValue>
-      <Value>$(SqlCmdVar__1)</Value>
-    </SqlCmdVariable>
+    <PostDeploy Include="Borium.Database.DemoDataPostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Schema\Borium\Tables\Artists.sql" />
-    <Build Include="Schema\Borium\Tables\ArtistWork.sql" />
-    <Build Include="Schema\Borium\Tables\Epoches.sql" />
-    <Build Include="Schema\Borium\Tables\Notes.sql" />
-    <Build Include="Schema\Borium\Tables\Works.sql" />
-    <Build Include="Schema\Borium\BoriumSchema.sql" />
-    <Build Include="Schema\Borium\Views\ArtistSummary.sql" />
+    <None Include="Tables\Epoches.sql" />
+    <None Include="Tables\Artists.sql" />
+    <None Include="Tables\Works.sql" />
+    <None Include="Tables\ArtistWork.sql" />
+    <None Include="Tables\Notes.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Borium.Database\Borium.Database.sqlproj">
+      <Name>Borium.Database</Name>
+      <Project>{63ca4fa5-5495-4bba-8876-18a5703c21d4}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+    </ProjectReference>
   </ItemGroup>
 </Project>
