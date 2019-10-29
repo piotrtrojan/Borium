@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EpochService } from 'src/app/services/epoch.service';
+import { first } from 'rxjs/operators';
+import { EpochDashboardDto } from 'src/app/dto/epoch/epoch-dashboard-dto';
 
 @Component({
   selector: 'app-epoch-dashboard',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EpochDashboardComponent implements OnInit {
 
-  constructor() { }
+  private epoches: Array<EpochDashboardDto>;
+
+  constructor(private epochService: EpochService) { }
 
   ngOnInit() {
+    this.epochService.getEpoches().pipe(first()).subscribe(
+      data => {
+        this.epoches = data;
+      }
+    )
   }
 
 }

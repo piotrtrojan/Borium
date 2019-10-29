@@ -21,7 +21,8 @@ namespace Borium.Application.Epoch.QueryHandler
         {
             using (var sqlConnection = new SqlConnection(_connectionString))
             {
-                return sqlConnection.Query<EpochDto>(EpochSqlQueries.GetEpochList).ToList();
+                var res = sqlConnection.Query<EpochDto>(EpochSqlQueries.GetEpochList).ToList();
+                return res;
             }
         }
     }

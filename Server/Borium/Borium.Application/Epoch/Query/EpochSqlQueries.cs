@@ -2,6 +2,6 @@
 {
     public static class EpochSqlQueries
     {
-        public const string GetEpochList = "SELECT * FROM Epoches";
+        public const string GetEpochList = "SELECT * FROM Borium.Epoches";
     }
 }
